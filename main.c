@@ -104,7 +104,7 @@ void printHex(int num) {
 }
 
 
-void rotateFull(int *cube, int face, int magnitude) {
+void rotate(int *cube, int face, int magnitude) {
     rotateFace(&cube[face], magnitude);
 
     int data[6];   // 0x{face3}{strip}{face2}{strip} etcccc, basically magic numbers, dont touch
@@ -141,11 +141,7 @@ int main() {
     cube[r] = 0x44444444;
     cube[y] = 0x55555555;
     printCube(cube);
-    clock_t start = clock(), diff;
-    diff = clock() - start;
-
-    int msec = diff * 1000 / CLOCKS_PER_SEC;
-    printf("%d\n", msec);
+    rotate(cube,1,1);
     printCube(cube);
     return 0;
 }
